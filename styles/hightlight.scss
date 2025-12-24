@@ -1,0 +1,104 @@
+@use "./color" as *;
+
+.hljs {
+    background: $md-sys-color-surface-container;
+    color: $md-sys-color-on-surface-variant;
+}
+
+.hljs-keyword,
+.hljs-literal,
+.hljs-symbol,
+.hljs-name {
+    color: $md-sys-color-primary;
+}
+
+.hljs-link {
+    color: $md-sys-color-primary;
+    text-decoration: underline;
+}
+
+.hljs-built_in,
+.hljs-type {
+    color: $md-sys-color-tertiary;
+}
+
+.hljs-number,
+.hljs-class {
+    color: $md-sys-color-primary;
+}
+
+.hljs-string,
+.hljs-meta .hljs-string {
+    color: $md-sys-color-secondary;
+}
+
+.hljs-regexp,
+.hljs-template-tag {
+    color: $md-sys-color-on-tertiary-container;
+}
+
+.hljs-subst,
+.hljs-function,
+.hljs-title,
+.hljs-params,
+.hljs-formula {
+    color: $md-sys-color-error;
+}
+
+.hljs-comment,
+.hljs-quote {
+    color: $md-sys-color-on-surface-variant;
+}
+
+.hljs-doctag {
+    color: $md-sys-color-on-surface-variant;
+}
+
+.hljs-meta,
+.hljs-meta .hljs-keyword,
+.hljs-tag {
+    color: $md-sys-color-primary;
+}
+
+.hljs-variable,
+.hljs-template-variable {
+    color: $md-sys-color-outline;
+}
+
+.hljs-attr,
+.hljs-attribute {
+    color: $md-sys-color-tertiary;
+}
+
+.hljs-section {
+    color: $md-sys-color-error;
+}
+
+.hljs-emphasis {
+    font-style: italic;
+}
+
+.hljs-strong {
+    font-weight: bold;
+}
+
+.hljs-bullet,
+.hljs-selector-tag,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+    color: $md-sys-color-surface-tint;
+}
+
+.hljs-addition {
+    background-color: #144212;
+    display: inline-block;
+    width: 100%;
+}
+
+.hljs-deletion {
+    background-color: #600;
+    display: inline-block;
+    width: 100%;
+}

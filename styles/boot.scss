@@ -1,0 +1,19 @@
+@use "./color" as *;
+
+html {
+    background-color: $md-sys-color-surface-container;
+    color: $md-sys-color-on-surface;
+}
+
+.post-body {
+    background: $md-sys-color-background;
+}
+
+:root {
+    color-scheme: dark;
+}
+
+* {
+    scrollbar-color: $md-sys-color-primary transparent;
+    scrollbar-width: thin;
+}

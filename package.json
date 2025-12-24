@@ -1,0 +1,23 @@
+{
+  "name": "material-blogger",
+  "version": "0.0.1",
+  "description": "Material 3 CSS styles for blogger.",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.0",
+    "postcss-preset-env": "^10.0.0",
+    "sass": "^1.0.0",
+    "terser": "^5.0.0",
+    "vite": "^7.0.0",
+    "vite-plugin-simple-html": "^1.0.0"
+  },
+  "dependencies": {
+    "@material/material-color-utilities": "^0.3.0",
+    "@material/web": "^2.0.0",
+    "vue": "^3.0.0"
+  }
+}

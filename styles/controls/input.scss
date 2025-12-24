@@ -1,0 +1,105 @@
+@use "sass:color";
+@use "../color" as *;
+
+$_active-indicator-color: $md-sys-color-on-surface-variant;
+$_active-indicator-height: 1px;
+$_caret-color: $md-sys-color-primary;
+$_container-color: $md-sys-color-surface-container-highest;
+$_disabled-active-indicator-color: $md-sys-color-on-surface;
+$_disabled-active-indicator-opacity: 0.38;
+$_disabled-container-color: $md-sys-color-on-surface;
+$_disabled-container-opacity: 0.04;
+$_disabled-label-text-color: $md-sys-color-on-surface;
+$_disabled-label-text-opacity: 0.38;
+$_error-active-indicator-color: $md-sys-color-error;
+$_error-focus-active-indicator-color: $md-sys-color-error;
+$_error-focus-label-text-color: $md-sys-color-error;
+$_error-hover-active-indicator-color: $md-sys-color-on-error-container;
+$_error-hover-label-text-color: $md-sys-color-on-error-container;
+$_error-hover-state-layer-color: $md-sys-color-on-surface;
+$_error-hover-state-layer-opacity: 0.08;
+$_error-label-text-color: $md-sys-color-error;
+$_focus-active-indicator-color: $md-sys-color-primary;
+$_focus-label-text-color: $md-sys-color-primary;
+$_hover-active-indicator-color: $md-sys-color-on-surface;
+$_hover-label-text-color: $md-sys-color-on-surface-variant;
+$_hover-state-layer-color: $md-sys-color-on-surface;
+$_hover-state-layer-opacity: 0.08;
+$_label-text-color: $md-sys-color-on-surface-variant;
+$_leading-space: 8px;
+$_container-shape-start: 4px;
+$_container-shape-end: 0px;
+
+.post-body {
+
+    input[type="datetime"],
+    input[type="email"],
+    input[type="number"],
+    input[type="password"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="text"],
+    input[type="url"],
+    input[type="date"],
+    input[type="datetime-local"],
+    input[type="month"],
+    input[type="time"],
+    input[type="week"],
+    textarea,
+    select {
+        color: $_label-text-color;
+        caret-color: $_caret-color;
+        background: $_container-color;
+        border: none;
+        border-radius: $_container-shape-start $_container-shape-start $_container-shape-end $_container-shape-end;
+        border-bottom: $_active-indicator-height solid $_active-indicator-color;
+        outline: none;
+        padding: $_leading-space;
+
+        &:not(:disabled):hover {
+            border-bottom-color: $_hover-active-indicator-color;
+            color: $_hover-label-text-color;
+            background: color.mix($_hover-state-layer-color, $_container-color, $_hover-state-layer-opacity * 100%);
+        }
+
+        &:not(:disabled):focus {
+            border-bottom-color: $_focus-active-indicator-color;
+            color: $_focus-label-text-color;
+        }
+
+        &:disabled {
+            border-bottom-color: color.change($_disabled-active-indicator-color, $alpha: $_disabled-active-indicator-opacity);
+            color: color.change($_disabled-label-text-color, $alpha: $_disabled-label-text-opacity);
+            background: color.change($_disabled-container-color, $alpha: $_disabled-container-opacity);
+        }
+
+        &:invalid {
+            color: $_error-label-text-color;
+            border-bottom-color: $_error-active-indicator-color;
+
+            &:not(:disabled):hover {
+                border-bottom-color: $_error-hover-active-indicator-color;
+                color: $_error-hover-label-text-color;
+                background: color.mix($_error-hover-state-layer-color, $_container-color, $_error-hover-state-layer-opacity * 100%);
+            }
+
+            &:not(:disabled):focus {
+                border-bottom-color: $_error-focus-active-indicator-color;
+                color: $_error-focus-label-text-color;
+            }
+        }
+    }
+
+    input[type="date"],
+    input[type="datetime-local"],
+    input[type="month"],
+    input[type="time"],
+    input[type="week"] {
+        padding: 5px $_leading-space;
+    }
+
+    textarea {
+        font-family: inherit;
+        font-size: inherit;
+    }
+}

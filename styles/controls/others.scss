@@ -1,0 +1,27 @@
+@use "../color" as *;
+
+.post-body {
+    option {
+        color: $md-sys-color-on-surface;
+        background: $md-sys-color-surface-container;
+    }
+
+    fieldset {
+        border-color: $md-sys-color-outline;
+        border-radius: 8px;
+    }
+
+    dialog {
+        &::backdrop {
+            background: $md-sys-color-scrim;
+            opacity: 0.32;
+        }
+
+        &:modal {
+            color: $md-sys-color-on-surface-variant;
+            background: $md-sys-color-surface-container-high;
+            border: none;
+            border-radius: 8px;
+        }
+    }
+}
