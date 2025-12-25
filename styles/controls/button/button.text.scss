@@ -1,0 +1,67 @@
+@use "sass:color";
+@use "../../color" as *;
+
+$_container-height: 36px;
+$_disabled-label-text-color: $md-sys-color-on-surface;
+$_disabled-label-text-opacity: 0.38;
+$_focus-label-text-color: $md-sys-color-primary;
+$_hover-label-text-color: $md-sys-color-primary;
+$_hover-state-layer-color: $md-sys-color-primary;
+$_hover-state-layer-opacity: 0.08;
+$_label-text-color: $md-sys-color-primary;
+$_pressed-label-text-color: $md-sys-color-primary;
+$_pressed-state-layer-color: $md-sys-color-primary;
+$_pressed-state-layer-opacity: 0.12;
+$_container-shape: 9999px;
+$_leading-space: 12px;
+$_container-color: none;
+$_disabled-container-color: none;
+$_disabled-container-opacity: 0;
+
+@mixin button-text-base {
+    color: $_label-text-color;
+    background: $_container-color;
+    border: none;
+    border-radius: $_container-shape;
+    outline: none;
+    padding: 0 $_leading-space;
+    min-height: $_container-height;
+
+    &:not(:disabled):hover {
+        color: $_hover-label-text-color;
+        background: color.change($_hover-state-layer-color, $alpha: $_hover-state-layer-opacity);
+    }
+
+    &:not(:disabled):active {
+        color: $_pressed-label-text-color;
+        background: color.change($_pressed-state-layer-color, $alpha: $_pressed-state-layer-opacity);
+    }
+
+    &:not(:disabled):focus {
+        color: $_focus-label-text-color;
+    }
+
+    &:disabled {
+        color: color.change($_disabled-label-text-color, $alpha: $_disabled-label-text-opacity);
+        background: $_disabled-container-color;
+    }
+}
+
+.post-body {
+
+    button.text,
+    input[type="button"].text,
+    input[type="reset"].text,
+    input[type="submit"].text,
+    input[type="color"].text {
+        @include button-text-base;
+    }
+
+    dialog:modal button,
+    dialog:modal input[type="button"],
+    dialog:modal input[type="reset"],
+    dialog:modal input[type="submit"],
+    dialog:modal input[type="color"] {
+        @include button-text-base;
+    }
+}

@@ -1,11 +1,40 @@
 {
   "name": "material-blogger",
   "version": "0.0.1",
-  "description": "Material 3 CSS styles for blogger.",
+  "description": "Material 3 CSS styles for Blogger.",
   "private": true,
   "scripts": {
     "dev": "vite",
     "build": "vite build"
+  },
+  "keywords": [
+    "CSS",
+    "Material",
+    "Style",
+    "Blogger"
+  ],
+  "homepage": "https://github.com/wherewhere/material-blogger",
+  "bugs": {
+    "url": "https://github.com/wherewhere/material-blogger/issues"
+  },
+  "license": "MIT",
+  "author": "wherewhere7",
+  "contributors": [
+    "wherewhere"
+  ],
+  "funding": [
+    {
+      "type": "patreon",
+      "url": "https://www.patreon.com/wherewhere"
+    },
+    {
+      "type": "爱发电",
+      "url": "http://afdian.com/@wherewhere"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wherewhere/material-blogger.git"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.0",
@@ -18,6 +47,7 @@
   "dependencies": {
     "@material/material-color-utilities": "^0.3.0",
     "@material/web": "^2.0.0",
+    "@unhead/vue": "^2.0.0",
     "vue": "^3.0.0"
   }
 }

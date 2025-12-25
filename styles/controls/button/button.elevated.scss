@@ -1,0 +1,89 @@
+@use "sass:color";
+@use "../../color" as *;
+
+$_container-color: $md-sys-color-surface-container-low;
+$_container-height: 36px;
+$_container-shadow-color: $md-sys-color-shadow;
+$_disabled-container-color: $md-sys-color-on-surface;
+$_disabled-container-opacity: 0.12;
+$_disabled-label-text-color: $md-sys-color-on-surface;
+$_disabled-label-text-opacity: 0.38;
+$_focus-label-text-color: $md-sys-color-primary;
+$_hover-label-text-color: $md-sys-color-primary;
+$_hover-state-layer-color: $md-sys-color-primary;
+$_hover-state-layer-opacity: 0.08;
+$_label-text-color: $md-sys-color-primary;
+$_pressed-label-text-color: $md-sys-color-primary;
+$_pressed-state-layer-color: $md-sys-color-primary;
+$_pressed-state-layer-opacity: 0.12;
+$_container-shape: 9999px;
+$_leading-space: 24px;
+
+@mixin button-elevated-base {
+    color: $_label-text-color;
+    background: $_container-color;
+    border: none;
+    border-radius: $_container-shape;
+    outline: none;
+    padding: 0 $_leading-space;
+    min-height: $_container-height;
+    box-shadow: 0px 1px 3px 1px color.change($_container-shadow-color, $alpha: 0.15);
+}
+
+@mixin button-elevated-status($disabled, $shadow: null) {
+    &:not(#{$disabled}):hover#{$shadow} {
+        color: $_hover-label-text-color;
+        background: color.mix($_hover-state-layer-color, $_container-color, $_hover-state-layer-opacity * 100%);
+    }
+
+    &:not(#{$disabled}):active#{$shadow} {
+        color: $_pressed-label-text-color;
+        background: color.mix($_pressed-state-layer-color, $_container-color, $_pressed-state-layer-opacity * 100%);
+    }
+
+    &:not(#{$disabled}):focus#{$shadow} {
+        color: $_focus-label-text-color;
+    }
+
+    &#{$disabled}#{$shadow} {
+        color: color.change($_disabled-label-text-color, $alpha: $_disabled-label-text-opacity);
+        background: color.change($_disabled-container-color, $alpha: $_disabled-container-opacity);
+        box-shadow: none;
+    }
+}
+
+.post-body {
+
+    button,
+    permission,
+    input[type="button"],
+    input[type="reset"],
+    input[type="submit"],
+    input[type="color"] {
+        @include button-elevated-base;
+    }
+
+    button,
+    input[type="button"],
+    input[type="reset"],
+    input[type="submit"],
+    input[type="color"] {
+        @include button-elevated-status(":disabled");
+    }
+
+    permission {
+        @include button-elevated-status(":granted");
+    }
+
+    input[type="color"] {
+        padding: 8px;
+    }
+
+    input[type="file"] {
+        &::-webkit-file-upload-button {
+            @include button-elevated-base;
+        }
+
+        @include button-elevated-status(":disabled", "::-webkit-file-upload-button");
+    }
+}

@@ -8,23 +8,24 @@
 .hljs-keyword,
 .hljs-literal,
 .hljs-symbol,
-.hljs-name {
+.hljs-name,
+.hljs-link,
+.hljs-number,
+.hljs-class,
+.hljs-meta,
+.hljs-tag {
     color: $md-sys-color-primary;
 }
 
 .hljs-link {
-    color: $md-sys-color-primary;
     text-decoration: underline;
 }
 
 .hljs-built_in,
-.hljs-type {
+.hljs-type,
+.hljs-attr,
+.hljs-attribute {
     color: $md-sys-color-tertiary;
-}
-
-.hljs-number,
-.hljs-class {
-    color: $md-sys-color-primary;
 }
 
 .hljs-string,
@@ -41,37 +42,20 @@
 .hljs-function,
 .hljs-title,
 .hljs-params,
-.hljs-formula {
+.hljs-formula,
+.hljs-section {
     color: $md-sys-color-error;
 }
 
 .hljs-comment,
-.hljs-quote {
-    color: $md-sys-color-on-surface-variant;
-}
-
+.hljs-quote,
 .hljs-doctag {
     color: $md-sys-color-on-surface-variant;
-}
-
-.hljs-meta,
-.hljs-meta .hljs-keyword,
-.hljs-tag {
-    color: $md-sys-color-primary;
 }
 
 .hljs-variable,
 .hljs-template-variable {
     color: $md-sys-color-outline;
-}
-
-.hljs-attr,
-.hljs-attribute {
-    color: $md-sys-color-tertiary;
-}
-
-.hljs-section {
-    color: $md-sys-color-error;
 }
 
 .hljs-emphasis {

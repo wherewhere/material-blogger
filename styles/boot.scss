@@ -5,8 +5,15 @@ html {
     color: $md-sys-color-on-surface;
 }
 
+body {
+    margin: 0;
+    padding: 16px;
+}
+
 .post-body {
+    padding: 16px;
     background: $md-sys-color-background;
+    border-radius: 8px;
 }
 
 :root {
