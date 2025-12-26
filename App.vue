@@ -9,8 +9,8 @@
       </p>
       <p>引用与代码：</p>
       <blockquote cite="https://example.com">这是一个块引用示例。</blockquote>
-      <pre><code>const x = 42;
-console.log(x);</code></pre>
+      <pre><code class="hljs language-js"><span class="hljs-keyword">const</span> x = <span class="hljs-number">42</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(x);</code></pre>
       <p>行内代码：<code>document.querySelector()</code>，键盘输入：<kbd>Ctrl</kbd>+<kbd>C</kbd></p>
       <p>缩写与引证：<abbr title="超文本标记语言">HTML</abbr>, <cite>引用来源</cite></p>
     </section>
@@ -251,37 +251,34 @@ console.log(x);</code></pre>
 </template>
 
 <script lang="ts" setup>
+import "./index.scss";
 import { useTemplateRef } from "vue";
 import { useSeoMeta } from "@unhead/vue";
 import { name, description, keywords } from "./package.json";
 
 const author = "wherewhere";
 useSeoMeta({
-    // Basic SEO
-    title: name,
-    description,
-    author: author,
-    keywords: keywords.join(", "),
+  // Basic SEO
+  title: name,
+  description,
+  author: author,
+  keywords: keywords.join(", "),
 
-    // Open Graph
-    ogTitle: name,
-    ogDescription: description,
-    ogType: "website",
-    ogLocale: "zh_CN",
-    ogSiteName: name,
+  // Open Graph
+  ogTitle: name,
+  ogDescription: description,
+  ogType: "website",
+  ogLocale: "zh_CN",
+  ogSiteName: name,
 
-    // Twitter
-    twitterCard: "summary",
-    twitterSite: "@wherewhere7",
+  // Twitter
+  twitterCard: "summary",
+  twitterSite: "@wherewhere7",
 
-    // Product specific (structured data will be generated)
-    articleAuthor: [author],
-    articleTag: keywords
+  // Product specific (structured data will be generated)
+  articleAuthor: [author],
+  articleTag: keywords
 });
 
 const dlg = useTemplateRef("dlg");
 </script>
-
-<style lang="scss">
-@use "./index";
-</style>

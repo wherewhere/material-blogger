@@ -1,3 +1,4 @@
+@use "./base" as *;
 @use "./color" as *;
 
 html {
@@ -13,7 +14,7 @@ body {
 .post-body {
     padding: 16px;
     background: $md-sys-color-background;
-    border-radius: 8px;
+    border-radius: $catalog-shape-xl;
 }
 
 :root {

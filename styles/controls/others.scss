@@ -1,3 +1,4 @@
+@use "../base" as *;
 @use "../color" as *;
 
 .post-body {
@@ -8,7 +9,8 @@
 
     fieldset {
         border-color: $md-sys-color-outline;
-        border-radius: 8px;
+        border-radius: $catalog-shape-l;
+        scrollbar-width: none;
     }
 
     dialog {
@@ -21,7 +23,64 @@
             color: $md-sys-color-on-surface-variant;
             background: $md-sys-color-surface-container-high;
             border: none;
-            border-radius: 8px;
+            border-radius: $catalog-shape-xl;
+            scrollbar-width: none;
         }
     }
+}
+
+.FeaturedPost,
+.post-filter-message,
+.post-outer-container,
+.PopularPosts {
+    border-radius: $catalog-shape-xl;
+}
+
+.FeaturedPost .post img {
+    border-radius: $catalog-shape-l;
+}
+
+.share-buttons {
+    border-radius: $catalog-shape-m;
+}
+
+.sidebar-container {
+    border-radius: 0 $catalog-shape-xl $catalog-shape-xl 0;
+}
+
+.FeaturedPost,
+.post-filter-message,
+.post-outer-container,
+.PopularPosts,
+.FeaturedPost .post img,
+.share-buttons,
+.sidebar-container {
+    scrollbar-width: none;
+}
+
+.profile-img {
+    transition: transform 1s ease-out;
+
+    &:hover {
+        transform: rotateZ(360deg);
+    }
+}
+
+.BlogArchive .post-count,
+.Label .label-count {
+    float: none;
+}
+
+.BlogArchive .archivedate a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.centered-top .search-expand .flat-icon-button {
+    bottom: 3px;
+}
+
+.sticky .centered-top .search-expand .flat-icon-button {
+    top: 5px;
 }

@@ -1,4 +1,5 @@
 @use "sass:color";
+@use "../../base" as *;
 @use "../../color" as *;
 
 $_container-color: $md-sys-color-surface-container-low;
@@ -77,6 +78,11 @@ $_leading-space: 24px;
 
     input[type="color"] {
         padding: 8px;
+
+        &::-webkit-color-swatch {
+            border-radius: $catalog-shape-xs;
+            border: 1px solid $md-sys-color-outline;
+        }
     }
 
     input[type="file"] {
@@ -86,4 +92,10 @@ $_leading-space: 24px;
 
         @include button-elevated-status(":disabled", "::-webkit-file-upload-button");
     }
+}
+
+.flat-button,
+.pill-button,
+.widget.Profile .profile-link.visit-profile {
+    border-radius: $_container-shape;
 }
