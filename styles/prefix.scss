@@ -1,0 +1,75 @@
+@use "./base" as *;
+
+.FeaturedPost,
+.post-filter-message,
+.post-outer-container,
+.PopularPosts {
+    border-radius: $catalog-shape-xl;
+}
+
+.FeaturedPost .post img {
+    border-radius: $catalog-shape-l;
+}
+
+.share-buttons {
+    border-radius: $catalog-shape-m;
+}
+
+.sidebar-container {
+    border-radius: 0 $catalog-shape-xl $catalog-shape-xl 0;
+
+    @media screen and (min-width: 1440px) {
+        border-radius: 0;
+    }
+}
+
+.FeaturedPost,
+.post-filter-message,
+.post-outer-container,
+.PopularPosts,
+.FeaturedPost .post img,
+.share-buttons,
+.sidebar-container {
+    scrollbar-width: none;
+}
+
+.profile-img {
+    transition: transform 1s ease-out;
+
+    &:hover {
+        transform: rotateZ(360deg);
+    }
+}
+
+.BlogArchive .post-count,
+.Label .label-count {
+    float: none;
+}
+
+.BlogArchive .archivedate a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.centered-top .search-expand .flat-icon-button {
+    bottom: 3px;
+
+    .sticky & {
+        top: 5px;
+        bottom: auto;
+
+        @media screen and (max-width:800px) {
+            top: 1px;
+        }
+    }
+}
+
+.post-bottom {
+    flex-wrap: nowrap;
+    align-items: flex-start;
+
+    .post-share-buttons .flat-icon-button {
+        margin-top: -4px;
+    }
+}
