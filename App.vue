@@ -251,9 +251,11 @@
 </template>
 
 <script lang="ts" setup>
+import "./types";
 import "./index.scss";
 import { useTemplateRef } from "vue";
 import { useSeoMeta } from "@unhead/vue";
+import { useAnalytics } from "./helpers/analytics";
 import { name, description, keywords } from "./package.json";
 
 const author = "wherewhere";
@@ -279,6 +281,7 @@ useSeoMeta({
   articleAuthor: [author],
   articleTag: keywords
 });
+useAnalytics();
 
 const dlg = useTemplateRef("dlg");
 </script>

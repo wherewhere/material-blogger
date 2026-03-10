@@ -1,4 +1,31 @@
 @use "./base" as *;
+@use "./color" as *;
+
+.post-body {
+    img {
+        &.emoji {
+            height: 18px;
+            margin-bottom: -3px;
+        }
+
+        &.badge {
+            border-radius: 0;
+        }
+
+        &.emoji,
+        &.badge {
+            display: inline;
+        }
+    }
+
+    img+figcaption.figure,
+    figcaption.figure {
+        color: $md-sys-color-on-surface-variant;
+        text-align: center;
+        margin-top: .25em;
+        margin-bottom: 1rem;
+    }
+}
 
 .FeaturedPost,
 .post-filter-message,
@@ -65,11 +92,48 @@
     }
 }
 
+.sticky .Header h1 {
+    padding-bottom: 0;
+
+    &,
+    a,
+    a:hover,
+    a:visited {
+        color: $md-sys-color-primary;
+    }
+
+    @media screen and (max-width:800px) {
+        margin-bottom: 0;
+    }
+}
+
+.post-share-buttons-top .flat-icon-button {
+
+    .main-heading+.main .post-outer-container &,
+    .FeaturedPost & {
+        margin-top: 0px;
+    }
+
+    @media screen and (max-width: 800px) {
+        .main-heading+.main .post-outer-container & {
+            margin-top: -8px;
+        }
+
+        .FeaturedPost & {
+            margin-top: -6px;
+        }
+    }
+}
+
 .post-bottom {
     flex-wrap: nowrap;
     align-items: flex-start;
 
     .post-share-buttons .flat-icon-button {
         margin-top: -4px;
+    }
+
+    .flat-button {
+        margin: 0px;
     }
 }

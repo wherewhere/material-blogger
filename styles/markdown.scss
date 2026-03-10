@@ -1,7 +1,7 @@
 @use "./base" as *;
 @use "./color" as *;
 
-$mono-font-family: Cascadia Code NF, Cascadia Code PL, Cascadia Code, Cascadia Next SC, Cascadia Next TC, Cascadia Next JP, Google Sans Mono, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+$mono-font-family: "Cascadia Code NF", "Cascadia Code PL", "Cascadia Code", "Cascadia Next SC", "Cascadia Next TC", "Cascadia Next JP", "Google Sans Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 
 .post-body {
     word-wrap: break-word;
@@ -76,8 +76,17 @@ $mono-font-family: Cascadia Code NF, Cascadia Code PL, Cascadia Code, Cascadia N
 
     img {
         border-style: none;
-        max-width: 100%;
         box-sizing: content-box;
+    }
+
+    embed,
+    iframe,
+    img,
+    video {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 100%;
     }
 
     img,

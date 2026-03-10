@@ -26,13 +26,14 @@ $_hover-input-text-color: $md-sys-color-on-surface;
 $_hover-state-layer-color: $md-sys-color-on-surface;
 $_hover-state-layer-opacity: 0.08;
 $_input-text-color: $md-sys-color-on-surface;
+$_input-text-size: 0.875rem;
 $_leading-space: 8px;
 $_container-shape-start: 4px;
 $_container-shape-end: 0px;
 
 .post-body {
 
-    input,
+    input.material,
     input[type="datetime"],
     input[type="email"],
     input[type="number"],
@@ -49,6 +50,7 @@ $_container-shape-end: 0px;
     textarea,
     select {
         color: $_input-text-color;
+        font-size: $_input-text-size;
         caret-color: $_caret-color;
         background: $_container-color;
         border: none;
@@ -133,6 +135,5 @@ $_container-shape-end: 0px;
 
     textarea {
         font-family: inherit;
-        font-size: inherit;
     }
 }

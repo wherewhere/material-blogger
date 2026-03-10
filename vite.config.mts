@@ -11,7 +11,7 @@ export default defineConfig({
             include: [/\.vue$/, /\.md$/],
             template: {
                 compilerOptions: {
-                    isCustomElement: tag => tag.includes('-')
+                    isCustomElement: tag => tag === "permission" || tag.includes('-')
                 }
             }
         }),

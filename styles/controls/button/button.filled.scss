@@ -13,6 +13,7 @@ $_hover-label-text-color: $md-sys-color-on-primary;
 $_hover-state-layer-color: $md-sys-color-on-primary;
 $_hover-state-layer-opacity: 0.08;
 $_label-text-color: $md-sys-color-on-primary;
+$_label-text-size: 0.875rem;
 $_pressed-label-text-color: $md-sys-color-on-primary;
 $_pressed-state-layer-color: $md-sys-color-on-primary;
 $_pressed-state-layer-opacity: 0.12;
@@ -21,6 +22,7 @@ $_leading-space: 24px;
 
 @mixin button-filled-base($disabled) {
     color: $_label-text-color;
+    font-size: $_label-text-size;
     background: $_container-color;
     border: none;
     border-radius: $_container-shape;
