@@ -1,0 +1,28 @@
+@use "../color" as *;
+
+$_active-indicator-color: $md-sys-color-primary;
+$_active-indicator-height: 4px;
+$_track-color: $md-sys-color-surface-container-highest;
+$_track-height: 4px;
+$_track-shape: 0;
+
+.post-body {
+    progress {
+        height: $_track-height;
+        color: $_active-indicator-color;
+        border: none;
+        background: $_track-color;
+
+        &::-ms-fill {
+            border: none;
+        }
+
+        &::-webkit-progress-bar {
+            background: $_track-color;
+        }
+
+        &::-webkit-progress-value {
+            background: $_active-indicator-color;
+        }
+    }
+}

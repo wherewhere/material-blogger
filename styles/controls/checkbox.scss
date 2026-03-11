@@ -1,0 +1,28 @@
+@use "../color" as *;
+
+.post-body {
+
+    input[type="checkbox"],
+    input[type="radio"] {
+        height: 18px;
+        width: 18px;
+
+        &::-ms-check {
+            color: $md-sys-color-on-primary;
+            border: 2px solid $md-sys-color-on-surface-variant;
+            background: none;
+        }
+
+        &:indeterminate,
+        &:checked {
+            &::-ms-check {
+                border: 2px solid $md-sys-color-primary;
+                background: $md-sys-color-primary;
+            }
+        }
+    }
+
+    input[type="checkbox"]::-ms-check {
+        border-radius: 2px;
+    }
+}

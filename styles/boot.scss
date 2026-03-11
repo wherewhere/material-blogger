@@ -1,22 +1,6 @@
 @use "./base" as *;
 @use "./color" as *;
 
-html {
-    background-color: $md-sys-color-surface-container;
-    color: $md-sys-color-on-surface;
-}
-
-body {
-    margin: 0;
-    padding: 16px;
-}
-
-.post-body {
-    padding: 16px;
-    background: $md-sys-color-background;
-    border-radius: $catalog-shape-xl;
-}
-
 :root {
     accent-color: $md-sys-color-primary;
     color-scheme: dark;

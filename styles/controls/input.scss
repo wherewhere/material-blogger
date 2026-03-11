@@ -1,4 +1,5 @@
 @use "sass:color";
+@use "../base" as *;
 @use "../color" as *;
 
 $_active-indicator-color: $md-sys-color-on-surface-variant;
@@ -31,9 +32,59 @@ $_leading-space: 8px;
 $_container-shape-start: 4px;
 $_container-shape-end: 0px;
 
+@mixin input-base {
+    color: $_input-text-color;
+    font-size: $_input-text-size;
+    caret-color: $_caret-color;
+    background: $_container-color;
+    border: none;
+    border-radius: $_container-shape-start $_container-shape-start $_container-shape-end $_container-shape-end;
+    border-bottom: $_active-indicator-height solid $_active-indicator-color;
+    outline: none;
+    padding: $_leading-space;
+}
+
+@mixin input-status($disabled, $shadow: null) {
+    &:not(#{$disabled}):hover#{$shadow} {
+        border-bottom-color: $_hover-active-indicator-color;
+        color: $_hover-input-text-color;
+        background: color.mix($_hover-state-layer-color, $_container-color, $_hover-state-layer-opacity * 100%);
+    }
+
+    &:not(#{$disabled}):focus#{$shadow} {
+        border-bottom-color: $_focus-active-indicator-color;
+        color: $_focus-input-text-color;
+    }
+
+    &#{$disabled}#{$shadow} {
+        border-bottom-color: color.change($_disabled-active-indicator-color, $alpha: $_disabled-active-indicator-opacity);
+        color: color.change($_disabled-input-text-color, $alpha: $_disabled-input-text-opacity);
+        background: color.change($_disabled-container-color, $alpha: $_disabled-container-opacity);
+    }
+
+    &:invalid {
+        &#{$shadow} {
+            color: $_error-input-text-color;
+            border-bottom-color: $_error-active-indicator-color;
+        }
+
+        &:not(:disabled):hover#{$shadow} {
+            border-bottom-color: $_error-hover-active-indicator-color;
+            color: $_error-hover-input-text-color;
+            background: color.mix($_error-hover-state-layer-color, $_container-color, $_error-hover-state-layer-opacity * 100%);
+        }
+
+        &:not(:disabled):focus#{$shadow} {
+            border-bottom-color: $_error-focus-active-indicator-color;
+            color: $_error-focus-input-text-color;
+        }
+    }
+}
+
 .post-body {
 
     input.material,
+    input[type="color"],
     input[type="datetime"],
     input[type="email"],
     input[type="number"],
@@ -49,48 +100,16 @@ $_container-shape-end: 0px;
     input[type="week"],
     textarea,
     select {
-        color: $_input-text-color;
-        font-size: $_input-text-size;
-        caret-color: $_caret-color;
-        background: $_container-color;
-        border: none;
-        border-radius: $_container-shape-start $_container-shape-start $_container-shape-end $_container-shape-end;
-        border-bottom: $_active-indicator-height solid $_active-indicator-color;
-        outline: none;
-        padding: $_leading-space;
+        @include input-base;
+        @include input-status(":disabled");
+    }
 
-        &:not(:disabled):hover {
-            border-bottom-color: $_hover-active-indicator-color;
-            color: $_hover-input-text-color;
-            background: color.mix($_hover-state-layer-color, $_container-color, $_hover-state-layer-opacity * 100%);
+    input[type="file"] {
+        &::-ms-value {
+            @include input-base;
         }
 
-        &:not(:disabled):focus {
-            border-bottom-color: $_focus-active-indicator-color;
-            color: $_focus-input-text-color;
-        }
-
-        &:disabled {
-            border-bottom-color: color.change($_disabled-active-indicator-color, $alpha: $_disabled-active-indicator-opacity);
-            color: color.change($_disabled-input-text-color, $alpha: $_disabled-input-text-opacity);
-            background: color.change($_disabled-container-color, $alpha: $_disabled-container-opacity);
-        }
-
-        &:invalid {
-            color: $_error-input-text-color;
-            border-bottom-color: $_error-active-indicator-color;
-
-            &:not(:disabled):hover {
-                border-bottom-color: $_error-hover-active-indicator-color;
-                color: $_error-hover-input-text-color;
-                background: color.mix($_error-hover-state-layer-color, $_container-color, $_error-hover-state-layer-opacity * 100%);
-            }
-
-            &:not(:disabled):focus {
-                border-bottom-color: $_error-focus-active-indicator-color;
-                color: $_error-focus-input-text-color;
-            }
-        }
+        @include input-status(":disabled", "::-ms-value");
     }
 
     select {
@@ -104,7 +123,7 @@ $_container-shape-end: 0px;
             color: $_hover-input-text-color;
         }
 
-        &:not(:disabled):active::-ms-expand {
+        &:not(:disabled):focus::-ms-expand {
             color: $_focus-input-text-color;
         }
 
@@ -122,6 +141,18 @@ $_container-shape-end: 0px;
 
         &:invalid:not(:disabled):focus::-ms-expand {
             color: $_error-focus-input-text-color;
+        }
+    }
+
+    input[type="color"] {
+        &::-webkit-color-swatch-wrapper {
+            height: .875rem;
+            padding: 0;
+        }
+
+        &::-webkit-color-swatch {
+            border-radius: $catalog-shape-xs;
+            border: 1px solid $md-sys-color-outline;
         }
     }
 

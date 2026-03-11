@@ -32,6 +32,10 @@
 .post-outer-container,
 .PopularPosts {
     border-radius: $catalog-shape-xl;
+
+    @media screen and (max-width: 800px) {
+        border-radius: $catalog-shape-l;
+    }
 }
 
 .FeaturedPost .post img {

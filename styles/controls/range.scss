@@ -1,0 +1,76 @@
+@use "../color" as *;
+
+$_active-track-color: $md-sys-color-primary;
+$_inactive-track-color: $md-sys-color-surface-container-highest;
+$_handle-color: $md-sys-color-primary;
+$_focus-handle-color: $md-sys-color-primary;
+$_pressed-handle-color: $md-sys-color-primary;
+$_disabled-active-track-color: $md-sys-color-on-surface;
+$_disabled-active-track-opacity: 0.38;
+$_disabled-inactive-track-color: $md-sys-color-on-surface;
+$_disabled-inactive-track-opacity: 0.12;
+$_disabled-handle-color: $md-sys-color-on-surface;
+$_track-height: 4px;
+$_track-shape: 9999px;
+$_handle-height: 20px;
+$_handle-width: 20px;
+$_handle-shape: 9999px;
+
+.post-body {
+    input[type="range"] {
+        min-height: $_handle-height;
+
+        &::-ms-thumb {
+            background: $_handle-color;
+            border: none;
+            border-radius: $_handle-shape;
+            height: $_handle-height;
+            width: $_handle-width;
+        }
+
+        &::-ms-track {
+            color: transparent;
+            border: none;
+            background: none;
+            height: $_track-height;
+        }
+
+        &::-ms-fill-lower {
+            background: $_active-track-color;
+            border-radius: $_track-shape;
+        }
+
+        &::-ms-fill-upper {
+            background: $_inactive-track-color;
+            border-radius: $_track-shape;
+        }
+
+        &:not(:disabled):focus {
+            &::-ms-thumb {
+                background: $_focus-handle-color;
+            }
+        }
+
+        &:not(:disabled):active {
+            &::-ms-thumb {
+                background: $_pressed-handle-color;
+            }
+        }
+
+        &:disabled {
+            &::-ms-thumb {
+                background: $_disabled-handle-color;
+            }
+
+            &::-ms-fill-lower {
+                background: $_disabled-active-track-color;
+                opacity: $_disabled-active-track-opacity;
+            }
+
+            &::-ms-fill-upper {
+                background: $_disabled-inactive-track-color;
+                opacity: $_disabled-inactive-track-opacity;
+            }
+        }
+    }
+}

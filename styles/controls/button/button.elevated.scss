@@ -1,5 +1,4 @@
 @use "sass:color";
-@use "../../base" as *;
 @use "../../color" as *;
 
 $_container-color: $md-sys-color-surface-container-low;
@@ -61,30 +60,19 @@ $_leading-space: 24px;
     permission,
     input[type="button"],
     input[type="reset"],
-    input[type="submit"],
-    input[type="color"] {
+    input[type="submit"] {
         @include button-elevated-base;
     }
 
     button,
     input[type="button"],
     input[type="reset"],
-    input[type="submit"],
-    input[type="color"] {
+    input[type="submit"] {
         @include button-elevated-status(":disabled");
     }
 
     permission {
         @include button-elevated-status(":granted");
-    }
-
-    input[type="color"] {
-        padding: 8px;
-
-        &::-webkit-color-swatch {
-            border-radius: $catalog-shape-xs;
-            border: 1px solid $md-sys-color-outline;
-        }
     }
 
     input[type="file"] {
@@ -95,6 +83,12 @@ $_leading-space: 24px;
         }
 
         @include button-elevated-status(":disabled", "::-webkit-file-upload-button");
+
+        &::-ms-browse {
+            @include button-elevated-base;
+        }
+
+        @include button-elevated-status(":disabled", "::-ms-browse");
     }
 }
 

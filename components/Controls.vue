@@ -72,8 +72,8 @@
           <input type="file" name="file">
         </label>
         <label class="label">
-          <span>隐藏</span>
-          <input type="hidden" name="hidden" value="secret">
+          <span>范围</span>
+          <input type="range" name="range" min="0" max="100" value="50">
         </label>
       </div>
       <fieldset>
@@ -127,11 +127,14 @@
         <permission type="camera"></permission>
         <permission type="microphone"></permission>
       </div>
+      <meter value="0.5" min="0" max="1" low="0.3" high="0.7" optimum="0.5"></meter>
+      <progress value="0.5" max="1"></progress>
     </div>
   </section>
 </template>
 
 <script lang="ts" setup>
+import "../types";
 import "../styles/controls/index.scss";
 import { useTemplateRef } from "vue";
 
