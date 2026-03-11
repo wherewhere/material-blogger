@@ -57,6 +57,10 @@
 .FeaturedPost .post img,
 .share-buttons,
 .sidebar-container {
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
     scrollbar-width: none;
 }
 

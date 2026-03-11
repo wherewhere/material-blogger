@@ -23,6 +23,14 @@ body {
 }
 
 * {
+    scrollbar-face-color: $md-sys-color-primary;
+    scrollbar-highlight-color: $md-sys-color-surface-container;
+    scrollbar-shadow-color: $md-sys-color-surface-container;
+    scrollbar-3dlight-color: $md-sys-color-surface-container;
+    scrollbar-arrow-color: $md-sys-color-primary;
+    scrollbar-track-color: $md-sys-color-surface-container;
+    scrollbar-darkshadow-color: $md-sys-color-surface-container;
+    scrollbar-base-color: $md-sys-color-primary;
     scrollbar-color: $md-sys-color-primary transparent;
     scrollbar-width: thin;
 }

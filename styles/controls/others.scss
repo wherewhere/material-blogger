@@ -8,6 +8,10 @@
     }
 
     fieldset {
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
         border-color: $md-sys-color-outline;
         border-radius: $catalog-shape-l;
         scrollbar-width: none;
@@ -20,6 +24,10 @@
         }
 
         &:modal {
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
             color: $md-sys-color-on-surface-variant;
             background: $md-sys-color-surface-container-high;
             border: none;

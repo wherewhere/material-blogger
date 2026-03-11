@@ -569,6 +569,10 @@ $mono-font-family: "Cascadia Code NF", "Cascadia Code PL", "Cascadia Code", "Cas
     video,
     .highlight pre,
     pre {
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
         scrollbar-width: none;
     }
 
