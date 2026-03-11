@@ -88,6 +88,8 @@ $_leading-space: 24px;
     }
 
     input[type="file"] {
+        background: none;
+
         &::-webkit-file-upload-button {
             @include button-elevated-base;
         }
