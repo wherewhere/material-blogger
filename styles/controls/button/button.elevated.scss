@@ -91,9 +91,3 @@ $_leading-space: 24px;
         @include button-elevated-status(":disabled", "::-ms-browse");
     }
 }
-
-.flat-button,
-.pill-button,
-.widget.Profile .profile-link.visit-profile {
-    border-radius: $_container-shape;
-}

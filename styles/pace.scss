@@ -1,0 +1,23 @@
+@use "./color" as *;
+$_track-height: 4px;
+
+.pace {
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+
+    .pace-progress {
+        background: $md-sys-color-primary;
+        position: fixed;
+        z-index: 33;
+        top: 0;
+        right: 100%;
+        width: 100%;
+        height: $_track-height;
+        transition: all 0.2s ease-in-out;
+    }
+}
+
+.pace-inactive {
+    display: none;
+}

@@ -1,6 +1,8 @@
 @use "./base" as *;
 @use "./color" as *;
 
+$_container-shape: 9999px;
+
 .post-body {
     img {
         &.emoji {
@@ -44,6 +46,12 @@
 
 .share-buttons {
     border-radius: $catalog-shape-m;
+}
+
+.flat-button,
+.pill-button,
+.widget.Profile .profile-link.visit-profile {
+    border-radius: $_container-shape;
 }
 
 .sidebar-container {
@@ -144,4 +152,8 @@
     .flat-button {
         margin: 0px;
     }
+}
+
+#HTML1 {
+    display: none;
 }

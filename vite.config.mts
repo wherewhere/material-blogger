@@ -28,7 +28,10 @@ export default defineConfig({
         postcss: {
             plugins: [
                 cssnano({
-                    preset: "advanced"
+                    preset: [
+                        "advanced",
+                        { zindex: false }
+                    ]
                 }),
                 postcssPresetEnv({
                     stage: 0,
