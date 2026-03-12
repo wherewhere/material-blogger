@@ -8,10 +8,9 @@
           "head title",
           'meta[name="description"]',
           "link[rel=canonical]",
-          'meta[name="og:url"]',
-          'meta[name="og:title"]',
-          'meta[name="og:description"]',
-          'script[type="application/json"]',
+          'meta[property="og:url"]',
+          'meta[property="og:title"]',
+          'meta[property="og:description"]',
           "body",
           "header",
           "main",
@@ -27,29 +26,51 @@
         analytics: false,
         cacheBust: false
       });
-      Pjax.prototype.executeScripts = function (/** @type {NodeListOf<HTMLScriptElement>} */ elements) {
-        for (var i = 0; i < elements.length; i++) {
-          var element = elements[i];
-          var code = element.text || element.textContent || element.innerHTML || '';
-          var script = document.createElement("script");
-          var attributes = element.attributes;
-          for (var j = 0; j < attributes.length; j++) {
-            var attribute = attributes[j];
-            script.setAttribute(attribute.name, attribute.value);
-          }
-          if (script.src) {
-            // Force synchronous loading of peripheral JS.
-            script.async = false;
-          }
-          if (code !== '') {
-            script.appendChild(document.createTextNode(code));
-          }
-          element.parentNode.replaceChild(script, element);
+      function cloneScript(/** @type {HTMLScriptElement} */ element) {
+        var code = element.text || element.textContent || element.innerHTML || '';
+        var script = document.createElement("script");
+        var attributes = element.attributes;
+        for (var j = 0; j < attributes.length; j++) {
+          var attribute = attributes[j];
+          script.setAttribute(attribute.name, attribute.value);
         }
-      };
+        if (script.src && !element.async) {
+          // Force synchronous loading of peripheral JS.
+          script.async = false;
+        }
+        if (code !== '') {
+          script.appendChild(document.createTextNode(code));
+        }
+        element.parentNode.replaceChild(script, element);
+        return script;
+      }
+      Pjax.prototype.executeScripts =
+        function (/** @type {NodeListOf<HTMLScriptElement>} */ elements) {
+          for (var i = 0; i < elements.length; i++) {
+            cloneScript(elements[i]);
+          }
+        };
+      function executeScriptsSync(/** @type {NodeListOf<HTMLScriptElement>} */ elements) {
+        var i = 0;
+        function next() {
+          if (i < elements.length) {
+            var script = cloneScript(elements[i++]);
+            if (script.src) {
+              script.onload = next;
+              script.onerror = next;
+            }
+            else {
+              next();
+            }
+          }
+        }
+        next();
+      }
       document.addEventListener("pjax:success", function () {
-        var elements = document.querySelectorAll("aside+script, .comments script, script[data-pjax]");
+        var elements = document.querySelectorAll("aside+script, script[data-pjax]");
         pjax.executeScripts(elements);
+        elements = document.querySelectorAll(".comments script");
+        executeScriptsSync(elements);
       });
       Pace.options.restartOnPushState = false;
       document.addEventListener("pjax:send", Pace.restart);
