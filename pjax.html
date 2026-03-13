@@ -6,11 +6,9 @@
       var pjax = new Pjax({
         selectors: [
           "head title",
-          'meta[name="description"]',
           "link[rel=canonical]",
-          'meta[property="og:url"]',
-          'meta[property="og:title"]',
-          'meta[property="og:description"]',
+          "meta[property='og:url']",
+          "meta[property='og:title']",
           "body",
           "header",
           "main",
@@ -27,7 +25,7 @@
         cacheBust: false
       });
       function cloneScript(/** @type {HTMLScriptElement} */ element) {
-        var code = element.text || element.textContent || element.innerHTML || '';
+        var code = element.text || element.textContent || element.innerHTML;
         var script = document.createElement("script");
         var attributes = element.attributes;
         for (var j = 0; j < attributes.length; j++) {
@@ -38,7 +36,7 @@
           // Force synchronous loading of peripheral JS.
           script.async = false;
         }
-        if (code !== '') {
+        if (code) {
           script.appendChild(document.createTextNode(code));
         }
         element.parentNode.replaceChild(script, element);
@@ -50,27 +48,33 @@
             cloneScript(elements[i]);
           }
         };
-      function executeScriptsSync(/** @type {NodeListOf<HTMLScriptElement>} */ elements) {
-        var i = 0;
-        function next() {
-          if (i < elements.length) {
-            var script = cloneScript(elements[i++]);
-            if (script.src) {
-              script.onload = next;
-              script.onerror = next;
-            }
-            else {
-              next();
+      Pjax.prototype.executeScriptsSync =
+        function (/** @type {NodeListOf<HTMLScriptElement>} */ elements) {
+          var i = 0;
+          function next() {
+            if (i < elements.length) {
+              var script = cloneScript(elements[i++]);
+              if (script.src) {
+                script.onload = next;
+                script.onerror = next;
+              }
+              else {
+                next();
+              }
             }
           }
+          next();
+        };
+      function removeElement(/** @type {NodeListOf<HTMLElement>} */ elements) {
+        for (var i = 0; i < elements.length; i++) {
+          var element = elements[i];
+          element.parentNode.removeChild(element);
         }
-        next();
       }
       document.addEventListener("pjax:success", function () {
-        var elements = document.querySelectorAll("aside+script, script[data-pjax]");
-        pjax.executeScripts(elements);
-        elements = document.querySelectorAll(".comments script");
-        executeScriptsSync(elements);
+        removeElement(document.querySelectorAll("body>div.dim-overlay"));
+        pjax.executeScripts(document.querySelectorAll("aside~script, script[data-pjax]"));
+        pjax.executeScriptsSync(document.querySelectorAll(".comments script"));
       });
       Pace.options.restartOnPushState = false;
       document.addEventListener("pjax:send", Pace.restart);

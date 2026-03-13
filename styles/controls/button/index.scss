@@ -1,3 +1,69 @@
-@use "./button.elevated" as *;
-@use "./button.filled" as *;
-@use "./button.text" as *;
+@use "./button.elevated" as elevated;
+@use "./button.filled" as filled;
+@use "./button.text" as text;
+
+.post-body {
+
+    button,
+    permission,
+    input[type="button"],
+    input[type="reset"],
+    input[type="submit"] {
+        @include elevated.button-elevated-base;
+    }
+
+    button,
+    input[type="button"],
+    input[type="reset"],
+    input[type="submit"] {
+        @include elevated.button-elevated-status(":disabled");
+    }
+
+    permission {
+        @include elevated.button-elevated-status(":granted");
+    }
+
+    input[type="file"] {
+        background: none;
+
+        &::-webkit-file-upload-button {
+            @include elevated.button-elevated-base;
+        }
+
+        @include elevated.button-elevated-status(":disabled", "::-webkit-file-upload-button");
+
+        &::-ms-browse {
+            @include elevated.button-elevated-base;
+        }
+
+        @include elevated.button-elevated-status(":disabled", "::-ms-browse");
+    }
+
+    button.filled,
+    input[type="button"].filled,
+    input[type="reset"].filled,
+    input[type="submit"].filled,
+    input[type="color"].filled {
+        @include filled.button-filled-base(":disabled");
+    }
+
+    permission:granted {
+        @include filled.button-filled-base(":invalid");
+    }
+
+    button.text,
+    input[type="button"].text,
+    input[type="reset"].text,
+    input[type="submit"].text,
+    input[type="color"].text {
+        @include text.button-text-base;
+    }
+
+    dialog:modal button,
+    dialog:modal input[type="button"],
+    dialog:modal input[type="reset"],
+    dialog:modal input[type="submit"],
+    dialog:modal input[type="color"] {
+        @include text.button-text-base;
+    }
+}

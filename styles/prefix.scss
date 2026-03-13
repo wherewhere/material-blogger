@@ -1,5 +1,6 @@
 @use "./base" as *;
 @use "./color" as *;
+@use "./controls/button/button.text" as button-text;
 
 $_container-shape: 9999px;
 
@@ -40,6 +41,10 @@ $_container-shape: 9999px;
     }
 }
 
+.post-filter-message {
+    color:  $md-sys-color-on-surface;
+}
+
 .FeaturedPost .post img {
     border-radius: $catalog-shape-l;
 }
@@ -59,6 +64,10 @@ $_container-shape: 9999px;
 
     @media screen and (min-width: 1440px) {
         border-radius: 0;
+    }
+
+    .widget+.widget {
+        border-top-style: solid;
     }
 }
 
@@ -93,6 +102,56 @@ $_container-shape: 9999px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.dim-overlay {
+    background: $md-sys-color-scrim;
+    opacity: 32%;
+}
+
+.dialog {
+    color: $md-sys-color-on-surface-variant;
+    background: $md-sys-color-surface-container-high;
+    border: none;
+    border-radius: $catalog-shape-xl;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    text-align: inherit;
+    width: auto;
+    min-height: 140px;
+    min-width: 280px;
+
+    .modal-dialog-title {
+        align-items: center;
+        color: $md-sys-color-on-surface;
+        font-size: 1.5rem;
+        line-height: 2rem;
+        font-weight: 400;
+        padding: 24px 24px 0;
+    }
+
+    .modal-dialog-content {
+        overflow: auto;
+        margin: 24px;
+    }
+
+    .modal-dialog-buttons {
+        display: flex;
+        gap: 8px;
+        justify-content: flex-end;
+        padding: 16px 24px 24px;
+        margin: 0;
+
+        .flat-button {
+            @include button-text.button-text-base($margin: 0, $min-width: 64px, $min-height: 40px, $padding: 10px 12px);
+        }
+    }
+
+    &.link-copied-dialog .modal-dialog-content {
+        margin-bottom: 8px;
+    }
 }
 
 .centered-top .search-expand .flat-icon-button {

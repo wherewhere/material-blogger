@@ -50,18 +50,3 @@ $_leading-space: 24px;
         background: color.change($_disabled-container-color, $alpha: $_disabled-container-opacity);
     }
 }
-
-.post-body {
-
-    button.filled,
-    input[type="button"].filled,
-    input[type="reset"].filled,
-    input[type="submit"].filled,
-    input[type="color"].filled {
-        @include button-filled-base(":disabled");
-    }
-
-    permission:granted {
-        @include button-filled-base(":invalid");
-    }
-}
