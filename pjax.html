@@ -73,7 +73,8 @@
       }
       document.addEventListener("pjax:success", function () {
         removeElement(document.querySelectorAll("body>div.dim-overlay"));
-        pjax.executeScripts(document.querySelectorAll("aside~script, script[data-pjax]"));
+        pjax.executeScripts(document.querySelectorAll("script[data-pjax]"));
+        pjax.executeScriptsSync(document.querySelectorAll("aside~script"));
         pjax.executeScriptsSync(document.querySelectorAll(".comments script"));
       });
       Pace.options.restartOnPushState = false;

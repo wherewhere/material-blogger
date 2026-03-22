@@ -4,6 +4,10 @@
 
 $_container-shape: 9999px;
 
+.blogger-clickTrap {
+    pointer-events: none;
+}
+
 .post-body {
     img {
         &.emoji {
@@ -21,7 +25,8 @@ $_container-shape: 9999px;
         }
     }
 
-    img+figcaption.figure,
+    img+figcaption,
+    a:has(img)+figcaption,
     figcaption.figure {
         color: $md-sys-color-on-surface-variant;
         text-align: center;
@@ -42,7 +47,7 @@ $_container-shape: 9999px;
 }
 
 .post-filter-message {
-    color:  $md-sys-color-on-surface;
+    color: $md-sys-color-on-surface;
 }
 
 .FeaturedPost .post img {

@@ -43,6 +43,7 @@ export default defineConfig({
     },
     build: {
         outDir: "dist",
+        cssMinify: false,
         sourcemap: true,
         minify: "terser"
     }
