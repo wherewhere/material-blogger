@@ -1,0 +1,54 @@
+@use "sass:string";
+
+@function svg-encode($fill-color, $svg) {
+	$fill-color: str-replace(#{$fill-color}, '#', "%23");
+
+	@each $char, $encoded in $encoding-reference {
+		@if $char =="currentColor" {
+			$svg: str-replace($svg, $char, $fill-color);
+		}
+
+		@else {
+			$svg: str-replace($svg, $char, $encoded);
+		}
+	}
+
+	@return "data:image/svg+xml," + $svg;
+}
+
+@function str-replace($string, $search, $replace: '') {
+	$index: string.index($string, $search);
+
+	@if $index {
+		@return string.slice($string, 1, $index - 1) + $replace + str-replace(string.slice($string, $index + string.length($search)), $search, $replace);
+	}
+
+	@return $string;
+}
+
+$encoding-reference: (
+    ('%', "%25"),
+    ('<', "%3C"),
+    ('>', "%3E"),
+    (' ', "%20"),
+    ('!', "%21"),
+    ('*', "%2A"),
+    ('\'', "%27"),
+    ('"', "%22"),
+    ('(', "%28"),
+    (')', "%29"),
+    (';', "%3B"),
+    (':', "%3A"),
+    ('@', "%40"),
+    ('&', "%26"),
+    ('=', "%3D"),
+    ('+', "%2B"),
+    ('$', "%24"),
+    (',', "%2C"),
+    ('/', "%2F"),
+    ('?', "%3F"),
+    ('#', "%23"),
+    ('[', "%5B"),
+    (']', "%5D"),
+    ("currentColor", '')
+);

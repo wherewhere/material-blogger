@@ -1,5 +1,6 @@
 @use "./base" as *;
 @use "./color" as *;
+@use "./svg";
 @use "./controls/button/button.text" as button-text;
 
 $_container-shape: 9999px;
@@ -220,4 +221,46 @@ $_container-shape: 9999px;
 
 #HTML1 {
     display: none;
+}
+
+.CSS_LIGHTBOX_BG_MASK {
+    background-color: $md-sys-color-scrim !important;
+}
+
+.CSS_LIGHTBOX_BTN_CLOSE {
+    background: url(svg.svg-encode($md-sys-color-primary, '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" /><path d="M0 0h24v24H0z" fill="none" /></svg>')) !important;
+    width: 24px !important;
+    height: 24px !important;
+}
+
+.CSS_LIGHTBOX_BTN_CLOSE_POS {
+    top: 36px !important;
+    right: 16px !important;
+
+    @media screen and (min-width: 940px) {
+        right: 36px !important;
+    }
+
+    @media screen and (max-width: 800px) {
+        top: 22px !important;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .CSS_HCONT_CHILDREN_HOLDER {
+        display: flex;
+    }
+}
+
+.CSS_LIGHTBOX_INDEX_INFO {
+    color: $md-sys-color-on-surface !important;
+}
+
+.CSS_LIGHTBOX_FILMSTRIP_THUMBNAIL {
+    border-radius: $catalog-shape-s - 2px;
+}
+
+.CSS_LIGHTBOX_FILMSTRIP_CONTROLS_FRAME {
+    border: 2px solid $md-sys-color-on-surface-variant !important;
+    border-radius: $catalog-shape-s;
 }
