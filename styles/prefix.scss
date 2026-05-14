@@ -71,10 +71,11 @@ $_container-shape: 9999px;
     @media screen and (min-width: 1440px) {
         border-radius: 0;
     }
+}
 
-    .widget+.widget {
-        border-top-style: solid;
-    }
+.sidebar-container .widget+.widget,
+.PopularPosts .post+.post {
+    border-top-style: solid;
 }
 
 .FeaturedPost,

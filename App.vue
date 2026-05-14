@@ -108,7 +108,6 @@ useSeoMeta({
   title: name,
   description,
   author: author,
-  keywords: keywords.join(", "),
 
   // Open Graph
   ogTitle: name,

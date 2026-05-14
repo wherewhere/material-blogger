@@ -5,57 +5,71 @@
     color: $md-sys-color-on-surface-variant;
 }
 
-.hljs-keyword,
-.hljs-literal,
-.hljs-symbol,
+.hljs-comment,
+.hljs-quote,
+.hljs-code,
+.hljs-formula,
+.hljs-doctag {
+    color: $md-sys-color-outline;
+}
+
+.hljs-operator,
+.hljs-punctuation,
+.hljs-subst,
+.hljs-selector-tag,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+    color: $md-sys-color-on-surface;
+}
+
+.hljs-tag,
 .hljs-name,
-.hljs-link,
+.hljs-literal,
 .hljs-number,
-.hljs-class,
-.hljs-meta,
-.hljs-tag {
+.hljs-symbol,
+.hljs-bullet,
+.hljs-variable.language_ {
     color: $md-sys-color-primary;
 }
 
-.hljs-link {
-    text-decoration: underline;
-}
-
-.hljs-built_in,
-.hljs-type,
-.hljs-attr,
-.hljs-attribute {
-    color: $md-sys-color-tertiary;
-}
-
 .hljs-string,
-.hljs-meta .hljs-string {
+.hljs-meta .hljs-string,
+.hljs-attr,
+.hljs-attribute,
+.hljs-template-variable,
+.hljs-built_in {
     color: $md-sys-color-secondary;
 }
 
 .hljs-regexp,
-.hljs-template-tag {
+.hljs-char.escape_ {
     color: $md-sys-color-on-tertiary-container;
 }
 
-.hljs-subst,
-.hljs-function,
+.hljs-property,
+.hljs-link,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-meta,
+.hljs-params {
+    color: $md-sys-color-tertiary;
+}
+
+.hljs-type,
 .hljs-title,
-.hljs-params,
-.hljs-formula,
+.hljs-title.function_,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-template-tag,
+.hljs-variable,
 .hljs-section {
     color: $md-sys-color-error;
 }
 
-.hljs-comment,
-.hljs-quote,
-.hljs-doctag {
-    color: $md-sys-color-on-surface-variant;
-}
-
-.hljs-variable,
-.hljs-template-variable {
-    color: $md-sys-color-outline;
+.hljs-link {
+    text-decoration: underline;
 }
 
 .hljs-emphasis {
@@ -66,23 +80,16 @@
     font-weight: bold;
 }
 
-.hljs-bullet,
-.hljs-selector-tag,
-.hljs-selector-id,
-.hljs-selector-class,
-.hljs-selector-attr,
-.hljs-selector-pseudo {
-    color: $md-sys-color-surface-tint;
-}
-
 .hljs-addition {
-    background-color: #144212;
+    background-color: $md-sys-color-tertiary-container;
+    color: $md-sys-color-on-tertiary-container;
     display: inline-block;
     width: 100%;
 }
 
 .hljs-deletion {
-    background-color: #600;
+    background-color: $md-sys-color-error-container;
+    color: $md-sys-color-on-error-container;
     display: inline-block;
     width: 100%;
 }
